@@ -1,4 +1,5 @@
 const express = require("express");
+const connect =require("./config/db")
 const router = require("./routes/students.routes");
 
 // const router = require("./routes/students.routes");
@@ -8,8 +9,8 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.set("views",__dirname+"/views");
 
-app.use("/stud", router);
-app.listen(8080, () => {
-    console.log("listening on port 8080");
-    
+app.use(router);
+app.listen(8085, () => {
+    console.log("listening on port 8085")
+    connect()
   });

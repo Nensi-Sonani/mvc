@@ -1,10 +1,11 @@
 const mongoose=require('mongoose')
-let studentSchema=new mongoose.Schema({
-    name:String,
-    number:Number,
-    course:String,
-    grid:Number,
-    city:String
+let movieSchema= new mongoose.Schema({
+    name:{ type: String, required: true },
+    rating:Number,
+    charactername:String,
+    discription:String,
+    relesedate:String,
+    language:String
 })
-const stud=mongoose.model("stud",studentSchema)
-module.exports=stud
+const movie=mongoose.model("movie",movieSchema)
+module.exports=movie

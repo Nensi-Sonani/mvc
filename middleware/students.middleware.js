@@ -1,6 +1,6 @@
 const check=(req,res,next)=>{
-    let{name,number,course}=req.body;
-    if(name&&number&&course){
+    let{name,charactername,language}=req.body;
+    if(name&&charactername&&language){
         next()
     }else{
         res.send("enter a valid details")

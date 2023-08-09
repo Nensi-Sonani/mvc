@@ -1,23 +1,36 @@
-const{Router}=require("express");
+const { Router } = require("express");
 // const{std}=require("../controllers/students.controlers")
-const{check}=require('../middleware/students.middleware')
-let router=Router();
-router.get("/",(req,res)=>{                                      
-    res.send("home page")
-})
+const MovieController = require("../controllers/students.controlers");
+const { check } = require("../middleware/students.middleware");
+const multer = require("multer");
+let router = Router();
 
-router.get("/form",(req,res)=>{
-    res.render("form")
-})
+let storage = multer.diskStorage({
+  destination: "images",
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + file.originalname);
+  },
+});
 
-router.get("/login",(req,res)=>{
-    res.render("login")
-})
+const upload = multer({
+  storage: storage,
+}).single("profile");
 
-router.get("/signup",(req,res)=>{
-    res.send("signup")
-})
+router.post("/image", upload,MovieController.MovieImage);
 
-// router.post("/add",check,std);
+router.get("/",MovieController.getmovietdata=()=> {
+  res.render("home");
+});
+router.post("/",MovieController.moviedata=()=> {
+  res.send("done");
+});
 
-module.exports=router
+router.patch("/:id",MovieController.updateMovie =()=> {
+  res.send("it's updated");
+});
+
+router.delete("/:id",MovieController.deleteMovie=()=>{
+  res.send("it's deleted");
+});
+
+module.exports = router;
