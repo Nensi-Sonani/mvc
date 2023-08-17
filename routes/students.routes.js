@@ -1,7 +1,7 @@
 const { Router } = require("express");
 // const{std}=require("../controllers/students.controlers")
-const MovieController = require("../controllers/students.controlers");
-const { check } = require("../middleware/students.middleware");
+const MovieController = require("../controllers/movie.controlers");
+const check  = require("../middleware/movie.middleware");
 const multer = require("multer");
 let router = Router();
 
@@ -19,7 +19,7 @@ const upload = multer({
 router.post("/image", upload,MovieController.MovieImage);
 
 router.get("/",MovieController.getmovietdata=()=> {
-  res.render("home");
+  res.send("home");
 });
 router.post("/",MovieController.moviedata=()=> {
   res.send("done");

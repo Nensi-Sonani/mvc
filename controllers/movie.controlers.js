@@ -1,5 +1,5 @@
 const getdir = require("../components");
-const movie = require("../models/students.schema");
+const movie = require("../models/movie.schema");
 const mov = async (req, res) => {
   try {
     console.log(req.body);
